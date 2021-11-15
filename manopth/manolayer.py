@@ -162,7 +162,7 @@ class ManoLayer(Module):
             assert th_pose_coeffs.shape[2:4] == (3, 3), (
                 'When not self.use_pca, th_pose_coeffs have 3x3 matrix for two'
                 'last dims, got {}'.format(th_pose_coeffs.shape[2:4]))
-            th_pose_rots = rotproj.batch_rotprojs(th_pose_coeffs)
+            th_pose_rots = th_pose_coeffs#rotproj.batch_rotprojs(th_pose_coeffs)
             th_rot_map = th_pose_rots[:, 1:].view(batch_size, -1)
             th_pose_map = subtract_flat_id(th_rot_map)
             root_rot = th_pose_rots[:, 0]
